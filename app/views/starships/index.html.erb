@@ -1,0 +1,23 @@
+<h1> Starship Textbook </h1>
+
+<h2> Choose options from the dropdown menu to learn more about the Starship fleet in a galaxy far far away </h2>
+
+<%= form_tag starships_path, method: 'get' do  %>
+  What is the
+  <div>
+    <label> Ship Attributes </label>
+    <%= select_tag(:starship_fact, options_for_select(@starship_facts.map{|starship| [starship, starship]}))%>
+  </div>
+
+  of the
+  <div>
+    <label> Ship names </label>
+    <%= select_tag(:starship_name, options_for_select(@starship_names.map{|starship| [starship, starship]}))%>
+  </div>
+  ?
+
+ <%= submit_tag 'Submit' %>
+ <%end %>
+
+ <div>
+   <%= @value %> is the <%= @fact %> of  <%= @starship.get("name") %>
